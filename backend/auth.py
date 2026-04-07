@@ -55,10 +55,45 @@ def get_current_user():
     try:
         verify_jwt_in_request()
         user_id = get_jwt_identity()
-        user = User.query.get(user_id)
+        if user_id is None:
+            return None
+        # Convert string ID back to integer for database query
+        user = User.query.get(int(user_id))
         return user
+    except (ValueError, TypeError) as e:
+        # Handle invalid user_id format
+        return None
     except Exception:
         return None
+
+def require_admin(f):
+    """
+    Decorator to require admin access for an endpoint
+    """
+    @wraps(f)
+    def decorated_function(*args, **kwargs):
+        try:
+            verify_jwt_in_request()
+            user_id = get_jwt_identity()
+            if user_id is None:
+                return jsonify({"error": "Invalid token"}), 401
+            
+            # Convert string ID back to integer for database query
+            user = User.query.get(int(user_id))
+            
+            if not user:
+                return jsonify({"error": "User not found"}), 404
+            
+            if not user.is_admin:
+                return jsonify({"error": "Admin access required"}), 403
+            
+            return f(*args, **kwargs)
+        except (ValueError, TypeError) as e:
+            return jsonify({"error": "Invalid token format", "message": str(e)}), 401
+        except Exception as e:
+            return jsonify({"error": "Authentication required", "message": str(e)}), 401
+    
+    return decorated_function
 
 def require_auth(f):
     """
@@ -69,15 +104,20 @@ def require_auth(f):
         try:
             verify_jwt_in_request()
             user_id = get_jwt_identity()
-            user = User.query.get(user_id)
+            if user_id is None:
+                return jsonify({"error": "Invalid token"}), 401
+            # Convert string ID back to integer for database query
+            user = User.query.get(int(user_id))
             
             if not user:
                 return jsonify({"error": "User not found"}), 404
             
             # Pass user object to the route handler
             return f(*args, **kwargs, current_user=user)
+        except (ValueError, TypeError) as e:
+            # Handle invalid user_id format
+            return jsonify({"error": "Invalid token format", "message": str(e)}), 401
         except Exception as e:
             return jsonify({"error": "Authentication required", "message": str(e)}), 401
     
     return decorated_function
-

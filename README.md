@@ -1,120 +1,119 @@
-# CoffeeChatAI — Frontend
+# ☕ CoffeeChat AI
 
-> AI-powered platform for meaningful professional coffee chats. Match, connect, and converse.
+**Your AI-powered networking assistant** that helps students and professionals connect with industry contacts by generating personalized outreach emails.
 
-![React](https://img.shields.io/badge/React-0d2137?style=flat&logo=react&logoColor=58a6ff)
-![Next.js](https://img.shields.io/badge/Next.js-0d2137?style=flat&logo=nextdotjs&logoColor=58a6ff)
-![Tailwind CSS](https://img.shields.io/badge/Tailwind-0d2137?style=flat&logo=tailwindcss&logoColor=58a6ff)
-![TypeScript](https://img.shields.io/badge/TypeScript-0d2137?style=flat&logo=typescript&logoColor=58a6ff)
+Repository: [CoffeeChatAIFrontend](https://github.com/PranavNarayanan347/CoffeeChatAIFrontend) (frontend app; backend may live under `backend/` in this workspace).
 
----
+## 🎨 Features
 
-## What This Is
+- **AI-Powered Email Generation** - Type your dream role and get personalized email drafts
+- **Resume-Based Personalization** - Upload your resume to extract talking points
+- **Chat Interface** - Natural conversation flow with AI assistant
+- **Email Preview & Export** - Review and send drafts directly to Gmail
+- **Chat History** - Track all your networking conversations
+- **Profile Management** - Update resume and preferences anytime
 
-CoffeeChatAI is a networking platform that uses AI to match users for 1:1 coffee chats — removing the friction from cold outreach and making meaningful professional connections easier to find and start.
+## 🚀 Tech Stack
 
-This repo is the frontend.
+- **Frontend Framework**: React 18 + TypeScript
+- **Build Tool**: Vite
+- **Styling**: Tailwind CSS v4
+- **UI Components**: shadcn/ui + Radix UI
+- **Routing**: React Router v6
+- **Icons**: Lucide React
+- **Animations**: Motion (Framer Motion)
+- **Charts**: Recharts
+- **Notifications**: Sonner
 
----
+## 📦 Installation
 
-## Features
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/PranavNarayanan347/CoffeeChatAIFrontend.git
+   cd CoffeeChatAIFrontend
+   ```
 
-- 🤝 AI-powered coffee chat matching
-- 💬 Real-time messaging via WebSockets
-- 🔐 Secure authentication (JWT / OAuth)
-- 👤 User profiles with customizable settings
-- 📱 Fully responsive — desktop, tablet, mobile
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
 
----
+3. **Start development server**
+   ```bash
+   npm run dev
+   ```
 
-## Tech Stack
+4. **Build for production**
+   ```bash
+   npm run build
+   ```
 
-| Layer | Choice |
-|---|---|
-| Framework | React.js / Next.js |
-| Styling | Tailwind CSS |
-| State | Redux Toolkit / Zustand |
-| Auth | JWT / OAuth |
-| Realtime | Socket.io |
-| HTTP | Axios |
-| Build | Vite |
+5. **Preview production build**
+   ```bash
+   npm run preview
+   ```
 
----
-
-## Getting Started
-
-**Prerequisites:** Node.js 16+, npm or yarn, Git
-
-```bash
-# Clone
-git clone https://github.com/PranavNarayanan347/CoffeeChatAIFrontend.git
-cd CoffeeChatAIFrontend
-
-# Install
-npm install
-
-# Set up environment
-cp .env.example .env.local
-```
-
-Configure `.env.local`:
-
-```env
-REACT_APP_API_URL=http://localhost:3001/api
-REACT_APP_SOCKET_URL=http://localhost:3001
-REACT_APP_GOOGLE_CLIENT_ID=your_google_client_id
-REACT_APP_STRIPE_PUBLISHABLE_KEY=your_stripe_key
-```
-
-```bash
-# Run
-npm run dev
-```
-
-Open [http://localhost:3000](http://localhost:3000)
-
----
-
-## Project Structure
+## 📁 Project Structure
 
 ```
-src/
-├── components/     # Reusable UI components
-├── pages/          # Page components
-├── hooks/          # Custom React hooks
-├── services/       # API services
-├── store/          # State management
-├── utils/          # Utility functions
-├── styles/         # Global styles
-└── types/          # TypeScript definitions
+CoffeeChatAIFrontend/
+├── components/          # React components
+│   ├── ui/             # shadcn/ui components
+│   └── ...             # Core app components
+├── pages/              # Route pages
+│   ├── Landing.tsx     # Landing page
+│   ├── Login.tsx       # Authentication
+│   ├── Chat.tsx        # Main chat interface
+│   └── Profile.tsx     # User profile
+├── styles/             # Global styles
+│   └── globals.css     # Tailwind + custom CSS
+├── App.tsx             # Main app component with routing
+├── main.tsx            # React entry point
+└── index.html          # HTML entry point
 ```
 
+## 🎨 Design System
+
+CoffeeChat AI uses a warm, professional color palette:
+
+- **Primary**: Amber/Orange gradient (`from-amber-400 to-orange-500`)
+- **Neutral**: Stone tones for backgrounds and text
+- **Accent**: Beige and caramel brown for depth
+
+## 🔧 Development
+
+### Available Scripts
+
+- `npm run dev` - Start development server (port 3000)
+- `npm run build` - Build for production
+- `npm run preview` - Preview production build
+- `npm run lint` - Run ESLint
+
+### Key Components
+
+- **ChatInterface** - Main chat UI with message handling
+- **EmailPreviewCard** - Preview generated emails
+- **HistorySidebar** - Chat history navigation
+- **OnboardingResumeUpload** - Resume upload flow
+- **WelcomeOverlay** - First-time user experience
+
+## 🌐 Deployment
+
+Build the project and deploy the `dist` folder to any static hosting service:
+
+- Vercel
+- Netlify
+- GitHub Pages
+- Cloudflare Pages
+
+## 📄 License
+
+This project is proprietary software.
+
+## 🤝 Contributing
+
+This is a private project. For any questions, please contact the project maintainer.
+
 ---
 
-## Scripts
-
-```bash
-npm run dev          # Start dev server
-npm run build        # Production build
-npm run test         # Run tests
-npm run lint         # ESLint
-npm run type-check   # TypeScript check
-```
-
----
-
-## Contributing
-
-1. Fork the repo
-2. Create a branch: `git checkout -b feature/your-feature`
-3. Commit: `git commit -m 'Add your feature'`
-4. Push: `git push origin feature/your-feature`
-5. Open a pull request
-
-Please follow the existing ESLint config, use Prettier for formatting, and add tests for new features.
-
----
-
-## License
-
-MIT — see [LICENSE](LICENSE) for details.
+**Made with ☕ and AI**

@@ -6,6 +6,14 @@ export interface User {
   email: string;
   name: string | null;
   stripe_customer_id: string | null;
+  bio: string | null;
+  company: string | null;
+  role: string | null;
+  linkedin_profile: string | null;
+  profile_picture_url: string | null;
+  email_verified: boolean;
+  is_admin: boolean;
+  preferences: any;
   created_at: string;
   updated_at: string;
 }

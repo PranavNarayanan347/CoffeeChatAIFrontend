@@ -159,3 +159,15 @@ coverage/
 *.tsbuildinfo
 .eslintcache
 .stylelintcache
+
+# Vite pre-bundled deps cache
+.vite/
+
+# Python
+__pycache__/
+*.py[cod]
+
+# Local secrets and SQLite (never commit)
+credentials.json
+token.json
+coffeechat.db
